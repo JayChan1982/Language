@@ -9,7 +9,8 @@ import this
 #   2、在开发中不要混用制表符和空格
 #   3、IDE工具一般都提供设置制表符所代表的空格的数量
 #   4、每行文本字符不超过72个(有些编译器会加一些格式)，不超过72个字符可以一个屏幕看两个程序,编译器一般会用竖线来提醒
-#   5、
+#   5、在诸如 ==、>=、<=、等比较运算两边各添加一个空格
+#   6、
 
 #   变量
 #   字符串 str
@@ -18,7 +19,7 @@ message2_str = " , that's good!"
 print(type(message_str))
 
 #   数字 int
-calc_int    = 18
+calc_int = 18
 print(type(calc_int))
 
 #   加法
@@ -37,11 +38,23 @@ print(16 / 2)
 calc_int2   = 18.26
 print(type(calc_int2))
 
+#   求模运算=求余数
+print( 4 % 3)
+print( 6 % 3)
+
 #   列表 list
 #   是有序的集合，可以通过索引值直接访问，索引从0开始
 #   列表元素是可以修改的，区别于元组
 #   程序处理期间用来承载可变化的数据集合的需求
 colors = ['red', 'black', 'pink', 'green', 'blue']
+
+#   列表为空时，返回false, 不为空时返回 True
+empty_list = []
+if(empty_list):
+    print("True")
+else:
+    print("false")
+
 
 #   列表访问方式1
 print(colors[0])
@@ -220,6 +233,87 @@ print(kitchen_foods)
 kitchen_foods = sorted(kitchen_foods[1:4] + ('flower', 'coffee'))
 print(kitchen_foods)
 
+#   字典 dict
+#   字典第一个是KEY值
+#   字典第二个是VALUE值
+#   字典是无序的，因为字典关心键和值的关联，不关心字典内元素的位置
+#   字典遍历时，存储的次序与返回的次序可能不一致
+#   定义一个空字典 alien = {}
+#   定义一个颜色和点数的字典
+alien = {"color":"red","point":5}
+
+#   访问字典元素
+print(type(alien))
+print(alien["color"])
+
+#   添加字典元素
+alien["position_x"] = 0
+alien["position_y"] = 25
+print(alien)
+
+#   删除字典元素[永久性]
+del alien["position_x"]
+print(alien)
+
+#   定义多键-值对
+alien = {
+    "color":"red",
+    "point":5,
+    "position_x":0,
+    "position_y":0
+}
+print(alien)
+
+#   遍历字典
+#   遍历字典时，存储的次序与返回的次序可能不一致
+#   遍历字典时，key,value键值对的变量名最好用有意义的，例如:字典中存储的是name,language，那就是name和language
+for key, value in alien.items():
+    print("键值是"+key+"="*2+">"+str(value))
+
+#   遍历字典中的所有键
+#   这种写法易于理解
+for key in alien.keys():
+    print("键值是" + key)
+#   遍历字典中的所有键 与 上面等价
+for key in alien:
+    print("键值是" + key)
+
+#   遍历字典中的所有键[按顺序]
+#   通过sorted函数对字典进行排序并生成一个键列表的副本
+for key in sorted(alien):
+    print("键值是" + key)
+
+#   遍历字典中的所有值
+for value in alien.values():
+    print("值是" + str(value))
+
+#   集合 set
+#   集合是不重复的列表[唯一性]
+#   函数 set() 可以使列表变成 集合
+#   定义一个字典
+languages = {
+    "eric":"ruby",
+    "jay":"python",
+    "cythia":"ruby",
+    "jacky":"java"
+}
+#   通过set函数去掉value列表的重复值，并遍历value列表
+for language in set(languages.values()):
+    print("language is " + language)
+
+#   字典中嵌套其他数据集合
+#   字典中嵌套字典
+users = {
+    "jay":{"age":18, "city":"wuxi", "salary":10000},
+    "cythia":{"age":16, "city":"wuxi", "salary":8000}
+}
+print(users)
+
+#   遍历字典中嵌套的字典
+for name, content in users.items():
+    for key, value in  content.items():
+        print( name + " == " + key + "==>" + str(value))
+
 #   指数运算 ** 后根 指数
 print(calc_int ** 2)
 
@@ -265,3 +359,42 @@ print(str(calc_int) + message_str)
 print(type(message_str))
 print(type(colors))
 
+#   if条件判断
+#   代码案例1
+#   if
+#   集合中是否存在这个值
+if(81 in nums):
+    print("the list has a 81")
+else:
+    print("error")
+
+#   if else
+#   集合中是否不存在这个值
+if(15 not in nums):
+    print("the list has not a 15")
+else:
+    print("error")
+
+#   if elif else
+#   集合中是否存在这些值
+if(15 in nums):
+    print("15 in the nums")
+elif(16 in nums):
+    print("16 in the nums")
+else:
+    print("no nums in the nums")
+
+#   注意: else代码块需要慎用，因为满足条件之外的部分全部执行else代码块中的内容可能引发不可知异常
+#   注意: if elif else 代码块在有一个条件满足的情况下，执行完满足条件的代码后直接跳出，下面的条件不会再执行
+
+#   接受输入函数 input()
+username = input("请输入姓名:")
+print(username)
+
+#   while循环
+#   代码案例
+#   需求: 数数 1 - 5
+count = 0
+while count < 5:
+    count += 1
+    print(count)
