@@ -11,7 +11,7 @@ import this
 #   4、每行文本字符不超过72个(有些编译器会加一些格式)，不超过72个字符可以一个屏幕看两个程序,编译器一般会用竖线来提醒
 #   5、在诸如 ==、>=、<=、等比较运算两边各添加一个空格
 #   6、一个函数只做一件事情，要把事件动作细颗粒化
-#   7、函数形参在命名时，需要望文知意
+#   7、
 
 #   变量
 #   字符串 str
@@ -479,3 +479,23 @@ def get_likecolors2(name, *colors, age='', **colorss):
 get_likecolors2("jay","pink","yellow","black", age= "18", n = "16" , m="15")
 #   调用函数方式3
 get_likecolors2("jay","pink","yellow","black",  n = "16" , m="15", age= "18",)
+
+#   导入模板
+#   import modulename    modulename.py文件必须与需导入得文件在同一个目录下面
+#   在导入文件中使用相关函数，需要通过modulename.functionname()来进行调用
+
+#   导入特定的函数
+#   from modulename import functionname1, functionname2, functionname3...
+#   在导入文件中使用相关函数，只需要通过functionname1()来进行调用
+
+#   使用as给导入的函数取一个别名
+#   from modulename import functionname1 as temp
+#   在导入文件中使用导入的函数时，只需要通过temp()进行调用
+
+#   使用as给模块取别名
+#   import modulename as temp
+#   在导入文件中使用相关函数，需要通过temp.functionname()来进行调用
+
+#   导入模板中所有函数
+#   from modulename import *
+#   不建议使用，容易因为函数名重名导致不可预测错误
