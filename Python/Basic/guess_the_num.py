@@ -20,10 +20,10 @@ def guessthenum():
 # guessthenum()
 
 #
-#   自动出题目进行加减法训练
-#   需求出1-100以内的加减法
+#   自动出题目进行加减乘除法训练
 #   第一个参数: 多少位以内的四则运算
 #   第二个参数: 取几种计算方法
+#   第三个参数: 出多少道题目
 #   1、+
 #   2、+ -
 #   3、+ - *
@@ -40,17 +40,23 @@ def calc_training(numrange, topicnum, topicrange):
         #   随机生成
         if func[str(int(random() * topicnum))] == "+":
             if int(input(str(num1) + " + " + str(num2) + " = ")) == (num1 + num2):
-                scores += 10
+                scores += 100 / topicrange
+                continue
         if func[str(int(random() * topicnum))] == "-":
             if int(input(str(num1) + " - " + str(num2) + " = ")) == (num1 - num2):
-                scores += 10
+                scores += 100 / topicrange
+                continue
         if func[str(int(random() * topicnum))] == "*":
             if int(input(str(num1) + " * " + str(num2) + " = ")) == (num1 * num2):
-                scores += 10
+                scores += 100 / topicrange
+                continue
         if func[str(int(random() * topicnum))] == "/":
             if int(input(str(num1) + " / " + str(num2) + " = ")) == (num1 / num2):
-                scores += 10
+                scores += 100 / topicrange
+                continue
     print("您最后的得分是" + str(scores))
 
 
-calc_training(20,2,11)
+# calc_training(20,2,11)
+
+calc_training(10000,4,10)
