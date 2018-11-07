@@ -10,7 +10,8 @@ import this
 #   3、IDE工具一般都提供设置制表符所代表的空格的数量
 #   4、每行文本字符不超过72个(有些编译器会加一些格式)，不超过72个字符可以一个屏幕看两个程序,编译器一般会用竖线来提醒
 #   5、在诸如 ==、>=、<=、等比较运算两边各添加一个空格
-#   6、
+#   6、一个函数只做一件事情，要把事件动作细颗粒化
+#   7、函数形参在命名时，需要望文知意
 
 #   变量
 #   字符串 str
@@ -388,8 +389,8 @@ else:
 #   注意: if elif else 代码块在有一个条件满足的情况下，执行完满足条件的代码后直接跳出，下面的条件不会再执行
 
 #   接受输入函数 input()
-username = input("请输入姓名:")
-print(username)
+# username = input("请输入姓名:")
+# print(username)
 
 #   while循环
 #   代码案例
@@ -398,3 +399,83 @@ count = 0
 while count < 5:
     count += 1
     print(count)
+
+#   自定义函数
+def greet_hello():
+    """ 显示 hello """
+    print("hello")
+greet_hello()
+
+#   自定义函数[带形参]
+#   形参: 函数定义时的参数
+#   实参: 函数调用时传的参数
+#   注意: 形参的位置和实参的位置需要一一对应，否则会出现逻辑错误
+#   如果有效的解决在实际调用过程中，实参和形参的位置传递导致的程序逻辑问题，通过使用关键字实参来避免
+def  descript_pet(animaltype, animalname):
+    print("the animal type is " + animaltype + " and name is " + animalname)
+descript_pet("dog","lucky")
+
+#   关键字实参[另一种函数调用方式]
+#   是传递给函数的名称=值对
+#   不需要考虑形参和实参的位置
+#   还可以通过关键字明确值得用途
+#   案例代码
+descript_pet(animaltype="dog", animalname="lucky")
+
+#   默认参数
+#   形参带默认值，这个形参必须写在不带默认值得形参得后面，否则会报错
+#   报错原因: 如果不按照上面得位置这么写默认值形参得话，在调用得过程中会出现形参和实参位置问题导致得调用错误
+#   调用过程中，如果默认值形参提供了实参传递得话，是直接用实参覆盖默认值
+def descipt_pet2(animalname, animaltype = "dog"):
+    print("the animal type is " + animaltype + " and name is " + animalname)
+
+#   调用1
+descipt_pet2("lucky")
+#   调用2
+descipt_pet2("lucky","cat")
+
+#   函数返回值
+def get_fullname(fistname, lastname):
+    return "your full name is " + fistname + "." + lastname
+
+#   返回值函数调用
+print(get_fullname("jay","chan"))
+
+#   传递任意数量得实参
+#   如果要让函数接受不同类型的实参，必须在函数定义中将接纳任意数量实参的形参放在最后。
+#   Python先匹配位置实参和关键字实参，再将余下的实参都收集到最后一个形参中
+#   * sportname 申明一个空元组
+def get_likesports(*sportnames):
+    for sportname in sportnames:
+        print("sport item is " + sportname)
+
+#   调用任意数量实参得函数
+get_likesports("jump","swim","run")
+get_likesports("height jump", "drive", "baseketall")
+
+#   位置形参、默认值形参、元组形参, 字典形参混用时应按照如下次序进行排列
+#   如按照如下顺序排列: 位置形参、默认值形参、元组形参、字典形参
+#   调用函数时，按照位置传递，默认值参数在调用时不能省略
+def get_likecolors(name, age = '', *colors, **colorss):
+    for color in colors:
+        if age:
+            print(str(age) + " 's " + name + "is like the " + color)
+        else:
+            print(name + " is like the " + color)
+    print(colorss)
+#   调用函数方式1
+get_likecolors("jay", "18", "pink","yellow","black", n = "16" , m="15")
+
+#   如按照如下顺序排列: 位置形参、元组形参、默认值形参、字典形参[最佳排列方式]
+#   调用函数时，默认值函数通过关键字实参进行传递，可以不考虑位置问题，但是不能放在元组形参前面
+def get_likecolors2(name, *colors, age='', **colorss):
+    for color in colors:
+        if age:
+            print(str(age) + " 's " + name + "is like the " + color)
+        else:
+            print(name + " is like the " + color)
+    print(colorss)
+#   调用函数方式2
+get_likecolors2("jay","pink","yellow","black", age= "18", n = "16" , m="15")
+#   调用函数方式3
+get_likecolors2("jay","pink","yellow","black",  n = "16" , m="15", age= "18",)
