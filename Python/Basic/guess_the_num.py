@@ -33,30 +33,30 @@ def calc_training(numrange, topicnum, topicrange):
     func = {"0":"+", "1":"-","2":"*","3":"/"}
     scores = 0
     # print(func[str(int(random() * topicnum))])
-    for i in range(1, topicrange):
+    for i in range(0, topicrange):
         #   生成两个随机正整数
         num1 = int(random() * numrange)
         num2 = int(random() * numrange)
+        key = str(int(random() * topicnum))
         #   随机生成
-        if func[str(int(random() * topicnum))] == "+":
+        if func[key] == "+":
             if int(input(str(num1) + " + " + str(num2) + " = ")) == (num1 + num2):
                 scores += 100 / topicrange
                 continue
-        if func[str(int(random() * topicnum))] == "-":
+        if func[key] == "-":
             if int(input(str(num1) + " - " + str(num2) + " = ")) == (num1 - num2):
                 scores += 100 / topicrange
                 continue
-        if func[str(int(random() * topicnum))] == "*":
+        if func[key] == "*":
             if int(input(str(num1) + " * " + str(num2) + " = ")) == (num1 * num2):
                 scores += 100 / topicrange
                 continue
-        if func[str(int(random() * topicnum))] == "/":
+        if func[key] == "/":
             if int(input(str(num1) + " / " + str(num2) + " = ")) == (num1 / num2):
                 scores += 100 / topicrange
                 continue
+
     print("您最后的得分是" + str(scores))
 
 
-# calc_training(20,2,11)
-
-calc_training(10000,4,10)
+calc_training(20,2,10)
