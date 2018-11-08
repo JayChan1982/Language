@@ -499,3 +499,5 @@ get_likecolors2("jay","pink","yellow","black",  n = "16" , m="15", age= "18",)
 #   导入模板中所有函数
 #   from modulename import *
 #   不建议使用，容易因为函数名重名导致不可预测错误
+
+

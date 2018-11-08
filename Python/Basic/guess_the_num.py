@@ -59,4 +59,4 @@ def calc_training(numrange, topicnum, topicrange):
     print("您最后的得分是" + str(scores))
 
 
-calc_training(20,2,10)
+calc_training(30,2,10)
